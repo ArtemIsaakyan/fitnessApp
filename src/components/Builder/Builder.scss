@@ -1,0 +1,27 @@
+.header_wrapper {
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.builder_wrapper {
+  display: block;
+  .age,
+  .sex,
+  .height,
+  .weight,
+  .name_field,
+  .goal,
+  .numberOfDays,
+  .opportunity,
+  .physical {
+    margin: 10px auto;
+    width: 400px;
+  }
+}
+
+.saveBtn {
+  justify-content: center;
+  margin-top: 50px;
+}

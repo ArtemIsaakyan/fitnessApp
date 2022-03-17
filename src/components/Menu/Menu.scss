@@ -1,0 +1,18 @@
+.menu {
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  .nav {
+    display: flex;
+    justify-content: center;
+    .logo {
+      font-size: 26px;
+      line-height: 56px;
+    }
+  }
+
+  .page_link {
+    text-decoration: none;
+    color: black;
+  }
+}
