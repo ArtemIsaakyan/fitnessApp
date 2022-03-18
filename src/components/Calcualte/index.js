@@ -39,7 +39,9 @@ export default function Calcualte({ userId }) {
     if (userId === 'default') {
       alert('Ошибка: вы не выбрали пользователя');
     } else {
-      let requestUsers = axios.get(`http://localhost:3001/fintess/users?id=${userId}`);
+      let requestUsers = axios.get(
+        `https://618101ae8bfae60017adfd5e.mockapi.io/users/?id=${userId}`,
+      );
       requestUsers
         .then(function (response) {
           calculateIMT(response.data);
@@ -53,10 +55,8 @@ export default function Calcualte({ userId }) {
   React.useEffect(() => {
     async function fetchData() {
       try {
-        const [exercisesResponse] = await Promise.all([
+        const [exercisesResponse, homeExercisesResponse] = await Promise.all([
           axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/newExercises'),
-        ]);
-        const [homeExercisesResponse] = await Promise.all([
           axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/homeExercises'),
         ]);
         setExercises(exercisesResponse.data);
@@ -68,7 +68,6 @@ export default function Calcualte({ userId }) {
     }
     fetchData();
   }, []);
-
   function calculateIMT(data) {
     // формула по расчету СТЕПЕНИ ОЖИРЕНИЯ
     let valueIMT = data[0].weight / Math.pow(data[0].height / 100, 2);
@@ -151,6 +150,7 @@ export default function Calcualte({ userId }) {
           Создать
         </Button>
       </Stack>
+
       <div className="info_block">
         {concluison && <div>Расчёт индекса массы тела: {concluison} </div>}
         {recomendedCalories && (

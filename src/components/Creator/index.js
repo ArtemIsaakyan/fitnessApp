@@ -20,7 +20,7 @@ export default function Creator({ users, exercises }) {
   function deleteUser(id) {
     axios
       .delete(`https://618101ae8bfae60017adfd5e.mockapi.io/users/${id}`)
-      .then(function (response) {
+      .then(function () {
         alert('Пользователь удален');
       })
       .catch(function (error) {
