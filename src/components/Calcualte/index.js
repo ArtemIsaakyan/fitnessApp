@@ -39,9 +39,7 @@ export default function Calcualte({ userId }) {
     if (userId === 'default') {
       alert('Ошибка: вы не выбрали пользователя');
     } else {
-      let requestUsers = axios.get(
-        `https://618101ae8bfae60017adfd5e.mockapi.io/users?id=${userId}`,
-      );
+      let requestUsers = axios.get(`http://localhost:3001/fintess/users?id=${userId}`);
       requestUsers
         .then(function (response) {
           calculateIMT(response.data);
@@ -159,7 +157,7 @@ export default function Calcualte({ userId }) {
           <div>Суточная норма калорий: {recomendedCalories.toFixed(0)} ккал</div>
         )}
       </div>
-      <div class="mobile">
+      <div className="mobile">
         {concluison && (
           <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '0 auto' }}
@@ -182,7 +180,7 @@ export default function Calcualte({ userId }) {
                           <List component="div" disablePadding>
                             <ListItemButton
                               sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <div class="block-left">
+                              <div className="block-left">
                                 <ListItemText primary={`Подходы: ${item.approaches}`} />
                                 <ListItemText primary={`Повторения: ${item.repetitions}`} />
                               </div>
@@ -245,7 +243,7 @@ export default function Calcualte({ userId }) {
                           <List component="div" disablePadding>
                             <ListItemButton
                               sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <div class="block-left">
+                              <div className="block-left">
                                 <ListItemText primary={`Подходы: ${item.approaches}`} />
                                 <ListItemText primary={`Повторения: ${item.repetitions}`} />
                               </div>
@@ -308,7 +306,7 @@ export default function Calcualte({ userId }) {
                           <List component="div" disablePadding>
                             <ListItemButton
                               sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <div class="block-left">
+                              <div className="block-left">
                                 <ListItemText primary={`Подходы: ${item.approaches}`} />
                                 <ListItemText primary={`Повторения: ${item.repetitions}`} />
                               </div>

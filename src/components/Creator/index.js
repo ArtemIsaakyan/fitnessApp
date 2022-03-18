@@ -7,14 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-
-
 import './Creator.scss';
 import Calculate from '../Calcualte';
 
 export default function Creator({ users, exercises }) {
   const [user, selectUser] = React.useState('default');
-
 
   const handleChange = (event) => {
     selectUser(event.target.value);

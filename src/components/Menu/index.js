@@ -20,6 +20,11 @@ export default function Menu() {
                 Создание тренировки
               </Link>
             </Button>
+            <Button size="medium" variant="outlined">
+              <Link className="page_link" to="/progress">
+                Прогресс
+              </Link>
+            </Button>
           </div>
         </Box>
       </div>

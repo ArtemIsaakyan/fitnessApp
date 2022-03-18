@@ -3,6 +3,7 @@ import axios from 'axios';
 import Builder from './components/Builder';
 import Creator from './components/Creator';
 import Menu from './components/Menu';
+import Progress from './components/Progress';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
@@ -22,7 +23,7 @@ function App() {
         setUsers(usersResponse.data);
         setExercises(exerciseResponse.data);
       } catch (error) {
-        alert('Ошибка при запросе данных ;(');
+        alert('Ошибка при запросе данных');
         console.error(error);
       }
     }
@@ -36,6 +37,7 @@ function App() {
         <Menu />
         <Switch>
           <Route exact path="/info" component={Builder} />
+          <Route exact path="/progress" component={Progress}/>
           <Route exact path="/calculate">
             <Creator users={users} exercises={exercises} />
           </Route>
