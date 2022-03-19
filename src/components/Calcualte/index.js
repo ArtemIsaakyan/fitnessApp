@@ -192,12 +192,18 @@ export default function Calcualte({ userId }) {
                                   СКРЫТЬ
                                 </Button>
                               ) : (
-                                <Button
-                                  variant="outlined"
-                                  color="success"
-                                  onClick={() => btnShowImage(item.id, status)}>
-                                  нагрузка
-                                </Button>
+                                <div className="buttons-block">
+                                  <Button
+                                    variant="outlined"
+                                    color="success"
+                                    className="buttonImage"
+                                    onClick={() => btnShowImage(item.id, status)}>
+                                    нагрузка
+                                  </Button>
+                                  <a className="video" href={`${item.video}`}>
+                                    ВИДЕО
+                                  </a>
+                                </div>
                               )}
                             </ListItemButton>
                             <div
@@ -255,12 +261,18 @@ export default function Calcualte({ userId }) {
                                   СКРЫТЬ
                                 </Button>
                               ) : (
-                                <Button
-                                  variant="outlined"
-                                  color="success"
-                                  onClick={() => btnShowImage(item.id, status)}>
-                                  нагрузка
-                                </Button>
+                                <div className="buttons-block">
+                                  <Button
+                                    variant="outlined"
+                                    color="success"
+                                    className="buttonImage"
+                                    onClick={() => btnShowImage(item.id, status)}>
+                                    нагрузка
+                                  </Button>
+                                  <a className="video" href={`${item.video}`}>
+                                    ВИДЕО
+                                  </a>
+                                </div>
                               )}
                             </ListItemButton>
                             <div
@@ -318,12 +330,18 @@ export default function Calcualte({ userId }) {
                                   СКРЫТЬ
                                 </Button>
                               ) : (
-                                <Button
-                                  variant="outlined"
-                                  color="success"
-                                  onClick={() => btnShowImage(item.id, status)}>
-                                  нагрузка
-                                </Button>
+                                <div className="buttons-block">
+                                  <Button
+                                    variant="outlined"
+                                    color="success"
+                                    className="buttonImage"
+                                    onClick={() => btnShowImage(item.id, status)}>
+                                    нагрузка
+                                  </Button>
+                                  <a className="video" href={`${item.video}`}>
+                                    ВИДЕО
+                                  </a>
+                                </div>
                               )}
                             </ListItemButton>
                             <div
