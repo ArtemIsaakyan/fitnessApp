@@ -96,26 +96,29 @@ export default function Progress() {
           return null;
         }
       });
-      setRes(resultProgress);
+      if (resultProgress.length > 0) {
+        setRes(resultProgress);
+      } else {
+        alert('Ошибка: нет данных для отслеживания прогресса');
+      }
     } else {
       alert('Ошибка: вы не выбрали пользователя');
     }
   }
 
-  if (res) {
-    var options = {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Вес',
-        },
+  var options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
       },
-    };
-
+      title: {
+        display: true,
+        text: 'Вес',
+      },
+    },
+  };
+  if (res) {
     const labels = res.map((val) => val.date);
 
     var data = {
