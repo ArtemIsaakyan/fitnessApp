@@ -67,6 +67,9 @@ export default function Progress() {
     setDate(event);
   };
 
+  // let a = '2022-03-26T13:05:53.000Z';
+  // console.log(a.slice(0, 10));
+
   function saveProgress() {
     console.log(user);
     if (user && weight && date) {
@@ -74,7 +77,7 @@ export default function Progress() {
         .post(`https://618101ae8bfae60017adfd5e.mockapi.io/progress`, {
           userId: user,
           weight: weight,
-          date: `'${date}'`.slice(0, 16),
+          date: `${date}`.slice(3, 10),
         })
         .then(function (response) {
           alert('Данные сохранились');
@@ -125,7 +128,7 @@ export default function Progress() {
       labels,
       datasets: [
         {
-          label: 'вес',
+          label: 'Вес',
           data: res.map((val) => val.weight),
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',

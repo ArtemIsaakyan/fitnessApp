@@ -2,6 +2,9 @@ import React from 'react';
 import * as Mui from '@material-ui/core';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios';
 
 import './Builder.scss';
@@ -16,6 +19,12 @@ export default function Builder() {
   const [height, setHeight] = React.useState('');
   const [weight, setWeight] = React.useState('');
   const [physicalActivity, setPhysicalActivity] = React.useState('');
+  const [disease, setDisease] = React.useState({
+    back: false,
+    neck: false,
+    hip: false,
+    knee: false,
+  });
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -45,6 +54,13 @@ export default function Builder() {
     setOpportunity(event.target.value);
   };
 
+  const handleChangeCheckBox = (event) => {
+    setDisease({
+      ...disease,
+      [event.target.name]: event.target.checked,
+    });
+  };
+  const { neck, back, hip, knee } = disease;
   function save() {
     if (name && age && goal && days && height && weight && sex && physicalActivity) {
       axios
@@ -58,6 +74,7 @@ export default function Builder() {
           weight: weight,
           opportunity: opportunity,
           physicalActivity: physicalActivity,
+          disease: disease,
         })
         .then(function (response) {
           console.log(response);
@@ -70,7 +87,6 @@ export default function Builder() {
       alert('Не все поля заполнены!');
     }
   }
-
   return (
     <React.Fragment>
       <h2 className="header_wrapper">Введите данные</h2>
@@ -393,6 +409,24 @@ export default function Builder() {
               <Mui.MenuItem value={120}>120кг</Mui.MenuItem>
             </Mui.Select>
           </Mui.FormControl>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={neck} onChange={handleChangeCheckBox} name="neck" />}
+              label="Шея"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={back} onChange={handleChangeCheckBox} name="back" />}
+              label="Спина"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={hip} onChange={handleChangeCheckBox} name="hip" />}
+              label="Тазобедренный"
+            />
+            <FormControlLabel
+              control={<Checkbox checked={knee} onChange={handleChangeCheckBox} name="knee" />}
+              label="Колено"
+            />
+          </FormGroup>
         </Mui.Box>
       </div>
       <Stack className="saveBtn" direction="row" spacing={2}>

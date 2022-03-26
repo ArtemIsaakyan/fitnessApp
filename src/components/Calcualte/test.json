@@ -8,7 +8,15 @@
           "body": "Пресс",
           "repetitions": "10-15",
           "approaches": "3",
-          "id": "1"
+          "id": "1",
+          "back" : {
+            "name": "Подъём ног в упоре",
+            "image": "press",
+            "body": "Пресс",
+            "repetitions": "10-15",
+            "approaches": "3",
+            "id_Analog" : 101
+          }
          },
          {
           "name": "Жим штанги лёжа классический",

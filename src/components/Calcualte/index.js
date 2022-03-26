@@ -19,6 +19,7 @@ export default function Calcualte({ userId }) {
   const [active, setActive] = React.useState('');
   const [status, setStatus] = React.useState(false);
   const [homeExercises, setHomeExercises] = React.useState(''); // получаем массив со всеми упражнениями для занятий дома
+  const [diseaseUser, setDiseaseUser] = React.useState('');
   const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
@@ -44,6 +45,7 @@ export default function Calcualte({ userId }) {
       );
       requestUsers
         .then(function (response) {
+          setDiseaseUser(response.data[0].disease);
           calculateIMT(response.data);
         })
         .catch(function (error) {
@@ -142,6 +144,7 @@ export default function Calcualte({ userId }) {
     setActive(id);
     setStatus(!st);
   }
+
 
   return (
     <React.Fragment>
