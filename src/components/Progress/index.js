@@ -10,7 +10,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -24,6 +25,13 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import './Progress.scss';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -66,9 +74,6 @@ export default function Progress() {
   const handleChangeDate = (event) => {
     setDate(event);
   };
-
-  // let a = '2022-03-26T13:05:53.000Z';
-  // console.log(a.slice(0, 10));
 
   function saveProgress() {
     console.log(user);
@@ -114,10 +119,6 @@ export default function Progress() {
     plugins: {
       legend: {
         position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Вес',
       },
     },
   };
@@ -279,8 +280,35 @@ export default function Progress() {
           </Stack>
         </div>
       )}
-
-      {res && <Line options={options} data={data} />}
+      {res && (
+        <React.Fragment>
+          <h1 className="titleTable">Графическое представление</h1>
+          <Bar className="chart" type="bar" options={options} data={data} />
+        </React.Fragment>
+      )}
+      {res && (
+        <TableContainer component={Paper}>
+          <h1 className="titleTable">Таблица</h1>
+          <Table sx={{ minWidth: 400 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">Дата</TableCell>
+                <TableCell align="center">Вес</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {res.map((row) => (
+                <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell align="center" component="th" scope="row">
+                    {row.date}
+                  </TableCell>
+                  <TableCell align="center">{row.weight}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </React.Fragment>
   );
 }
