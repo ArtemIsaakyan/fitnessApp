@@ -22,6 +22,7 @@ export default function Creator({ users, exercises }) {
       .delete(`https://618101ae8bfae60017adfd5e.mockapi.io/users/${id}`)
       .then(function () {
         alert('Пользователь удален');
+        document.location.reload();
       })
       .catch(function (error) {
         console.log(error);

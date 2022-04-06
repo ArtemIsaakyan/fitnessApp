@@ -60,6 +60,7 @@ export default function Builder() {
       [event.target.name]: event.target.checked,
     });
   };
+
   const { neck, back, hip, knee } = disease;
   function save() {
     if (name && age && goal && days && height && weight && sex && physicalActivity) {
@@ -76,9 +77,9 @@ export default function Builder() {
           physicalActivity: physicalActivity,
           disease: disease,
         })
-        .then(function (response) {
-          console.log(response);
+        .then(function () {
           alert('Данные сохранились');
+          document.location.reload();
         })
         .catch(function (error) {
           console.log(error);
@@ -87,6 +88,7 @@ export default function Builder() {
       alert('Не все поля заполнены!');
     }
   }
+
   return (
     <React.Fragment>
       <h2 className="header_wrapper">Введите данные</h2>
@@ -410,6 +412,9 @@ export default function Builder() {
             </Mui.Select>
           </Mui.FormControl>
           <FormGroup>
+            <Mui.InputLabel style={{ marginTop: '10px' }} id="demo-simple-select-label">
+              Присутствуют боли:
+            </Mui.InputLabel>
             <FormControlLabel
               control={<Checkbox checked={neck} onChange={handleChangeCheckBox} name="neck" />}
               label="Шея"

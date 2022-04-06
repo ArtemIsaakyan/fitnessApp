@@ -84,8 +84,9 @@ export default function Progress() {
           weight: weight,
           date: `${date}`.slice(3, 10),
         })
-        .then(function (response) {
+        .then(function () {
           alert('Данные сохранились');
+          document.location.reload();
         })
         .catch(function (error) {
           console.log(error);

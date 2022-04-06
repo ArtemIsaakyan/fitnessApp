@@ -145,7 +145,6 @@ export default function Calcualte({ userId }) {
     setStatus(!st);
   }
 
-
   return (
     <React.Fragment>
       <Stack className="calcualteBtn" direction="row" spacing={2}>
